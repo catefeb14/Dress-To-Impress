@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dress to Impress</title>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+	<style>
+		body {background-color: #EC64CE; margin: 125px auto; text-align: center; align-items: center;}
+		h1 {font-size: 25pt; margin: 0 auto; background-color: #E844C3; color: #D4EAF5; width: 400px; border-radius: 15px;}
+		div#icons {margin: auto; width: 480px; height: 150px; position: relative; display: flex; justify-content: center; align-items: center;}
+		.menu {display: flex; align-items: center; justify-content: space-between; position: relative; width: 100%; text-align: center;}
+		ul, li{margin:0; padding:0;}
+		li {list-style-type: none; position: relative;}
+		
+		.character {width: 100px; height: auto; display: block; background-color:#C204F1; border:1px #FAF1FF ridge; border-radius: 15px; margin: 0 10px; box-shadow: inset 0 0 0 0 #000099; transition:ease-out 0.3s;}
+		.character:hover{box-shadow: inset 0 120px 0 0 #000099; cursor:pointer; }
+		
+		a {text-decoration: none; color: #ffffff; font-weight: bold;}
+		a::after {content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #ffffff; transition: width 0.3s ease-in-out;}
+		a:hover::after {width: 100%; }
+
+		#menu li a:hover {color: #353289;}
+		.characterInfo-1, .characterInfo-2, .characterInfo-3 {display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 200px; background-color: #A20069; color: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 10;}
+		.navActive {display: block;}
+	</style>
+</head>
+<body>
+	<h1>Choose Your Character:</h1>
+	<div id="icons">
+		<nav>
+			<ul class="menu">
+				<li class="dan">
+					<p><img src="images/character/danCharacter.png" class="character" alt="" title="dan" />dan</p>
+					<div class="characterInfo-1">
+						<p>Meet Dan, a nature-loving guy who likes to climb trees and go camping! He has spent the past 2 years living amongst the wolves, and is in need of a makeover!</p>
+						<a href="playDan.html">Select Dan</a>
+					</div>
+				</li>
+				<li class="serena">
+					<p><img src="images/character/serenaCharacter.png" class="character" alt="" title="serena" />serena</p>
+					<div class="characterInfo-2">
+						<p>Meet Serena, a posh Upper Eastsider who loves to shop! She has an adventurous spirit that takes her around the world. She wants a new look that's sure to spark conversation!</p>
+						<a href="playSerena.html">Select Serena</a>
+					</div>
+				</li>
+				<li class="nate">
+					<p><img src="images/character/nateCharacter.png" class="character" alt="" title="nate" />nate</p>
+					<div class="characterInfo-3">
+						<p>Meet Nate, a sweet tourist on a trip backpacking through Europe! Nate enjoys meeting new people and taking risks. He needs a fresh look before heading to London!</p>
+						<a href="playNate.html">Select Nate</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$('.dan').hover(function() { $('.characterInfo-1').toggleClass('navActive'); });
+			$('.serena').hover(function() { $('.characterInfo-2').toggleClass('navActive'); });
+			$('.nate').hover(function() { $('.characterInfo-3').toggleClass('navActive'); });
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dress to Impress</title>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+		body {background-color: #EC64CE; margin:250px auto; text-align:center; align-items:center;}
+		h1{font-size:45pt; margin: 0 auto; background-color:#E844C3; color:#D4EAF5; width:550px; border-radius:15px;}
+		div#icons {display:none; margin: 20px auto; width: 450px; height: auto; border: medium #FAF1FF ridge; border-radius: 10px; align-items: center; justify-content: center; text-align: center;}
+		.menu{margin:auto; display:flex; align-items:center; justify-content: space-between;}
+		.character { width: 75px; height: 81px; display: block; margin: 0px 10px;}
+		a{text-decoration: none; color:#ffffff; font-weight: bold;}
+		li{list-style-type:none;}
+		#menu li a:hover{color:#353289;}
+		.characterInfo-1, .characterInfo-2, .characterInfo-3{text-align: left; display:none; flex-direction:column; background-color:#A20069;}
+		.navActive{display:flex;}
+		
+		div#buttonContainer { width:300px; display:flex; justify-content: space-between; margin: 10px auto;}
+		.buttons {background: #fff; width: auto; border: medium #FAF1FF ridge; border-radius: 17px; display:block; color:#260021; font-size:20pt; font-weight:normal; padding-left:5px; padding-right:5px;}
+		div#button1{margin:0;}
+		div#button2{margin:0;}
+		.buttons:hover {transform: scale(1.1); box-shadow: 0 4px 8px #666666; cursor:pointer;}
+		
+		.directions{display: none; position:fixed; bottom:-400px; left:50%; transform:translateX(-200px); width:400px; background-color:#D4EAF5; margin:10px auto; padding:20px 5px; text-align: left; border: 1px #FAF1FF ridge; border-radius: 17px;}
+		ul li{list-style-type: none; }
+		div#directions h3{font-size:17pt; color:#260021; }
+		#close{float:right; background:none; font-size:16pt; color:#260021; cursor:pointer;}
+		.directionsActive{display:flex;}
+	</style>
+</head>
+<body>
+    <h1>Dress to Impress!</h1>
+	<div id="buttonContainer">
+		<a class="buttons" id="button1" href="chooseCharacter.html">PLAY</a>	
+		<a class="buttons" id="button2">HOW TO PLAY</a>
+	</div>
+	<div class="directions">
+		<button id="close">X</button>
+		<ul>
+			<li>
+				<h3>Choose your character.</h3>
+			</li>
+			<li>
+				<h3>Select a closet type to look through.</h3>
+			</li>
+			<li>
+				<h3>Click and drag clothing items onto doll.</h3>
+			</li>
+			<li>
+				<h3>Press complete to download a picture of your outfit!</h3>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="directionsActive"></div>
+	<!-- dropdown navigation -->
+	<div id="icons">
+	<nav>
+		<ul class="menu">
+			<li class="dan">
+				<p>dan<img src="images/character/danCharacter.png" class="character" alt="dan" title="dan" /></p>
+				<div class="characterInfo-1">
+					<p>Meet Dan, a nature-loving guy who likes to climb trees and go camping! He has spent the past 2 years living amongst the wolves, and is in need of a makeover!</p>
+					<a href="playDan.html">Select Dan</a>
+				</div>
+			</li>
+			<li class="serena">
+				<p>serena<img src="images/2.png" class="character" alt="serena" title="serena" /></p>   
+				<div class="characterInfo-2">
+					<p>Meet Serena, a posh Upper Eastsider who loves to shop! She has an adventerous spirit that takes her around the world. She's wants a new look that's sure to spark conversation!</p>
+					<a href="playSerena.html">Select Serena</a>
+				</div>
+			</li>
+			<li class="nate">
+				<p>nate<img src="images/3.png" class="character" alt="nate" title="nate" /></p>
+				<div class="characterInfo-3">
+					<p>Meet Nate, a sweet tourist on a trip backpacking through Europe! Nate enjoys meeting new people and taking risks. He needs a fresh look before heading to London!</p>
+					<a href="playNate.html">Select Nate</a>
+				</div>
+			</li>		
+		</ul>
+	</nav>
+	</div>
+	<!-- end dropdown navigation -->
+
+	
+	<!-- Add jQuery here -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		// Slide in the directions div from the bottom when button2 is clicked
+			$("#button2").click(function() {
+				// Make the directions div visible and move it up from the bottom
+				 $(".directions").show().animate({
+					 bottom: "105px" // Slide it to its final position
+				 }, 500);
+				});
+
+			// Close the directions div when the close button is clicked
+				$("#close").click(function(event) {
+				// Prevent default behavior of the button
+					event.preventDefault();
+
+				// Slide the directions div back down and hide it
+				$(".directions").animate({
+					bottom: "-400px" // Slide it off-screen
+				}, 500, function() {
+					$(this).css("display", "none"); // Hide it after animation
+				});
+			});
+
+			//drop the dropdown from the top
+	
+			
+			// toggle first nav on hover 
+			$('.dan').hover(function() {
+			  $('.characterInfo-1').toggleClass('navActive')
+			})
+			// toggle second nav on hover 
+			$('.serena').hover(function() {
+			  $('.characterInfo-2').toggleClass('navActive')
+			})
+			// toggle third nav on hover 
+			$('.nate').hover(function() {
+			  $('.characterInfo-3').toggleClass('navActive')
+			})
+			
+		}); //end document ready
+	</script>
+	
+
+</body>
+</html>

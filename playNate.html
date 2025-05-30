@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dress to Impress</title>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+
+	<!-- contact me fixed flyout div -->
+	<div id="contact"><span>FREE DOLL!</span></div>
+	<div id="contactForm">
+		<div id="contactClose" style="position: relative; text-align: center; width: 15px; left: 175px; top: 5px; border: 1px solid #dddddd; padding: 1px; color: #dddddd; cursor: pointer;">X</div>
+		<div id="contactAddress" style="position: relative;width: 180px; left: 10px; top: 5px; padding: 1px; color: #dddddd; font-size:8pt;">
+		<p>ENTER HERE FOR A CHANCE TO WIN A FREE IMPRESS DOLL</p><br/>&nbsp;100 lucky winners will be sent a doll of their choice, and customized with an outfit you pick out!<br/>&nbsp;<br/>
+		Enter Your Email for a Chance to Win:<br/><br/>
+		<div style="background-color:#ffffff; color: #ffffff; border: 1px solid black; border-radius:5px; height:17px; width:150px; margin:0 auto;"></div><br/>&nbsp;<br/>
+		</div>	
+	</div>
+	<!-- end contact me -->
+	
+    <h1 style="text-align:center;">Dress to Impress!</h1>
+	
+	<!-- dropdown navigation -->
+	<div id="icons">
+	<nav>
+		<ul class="menu">
+			<li class="dan">
+				<a href="playDan.html"><p>dan<img src="images/character/danCharacter.png" class="character"  alt="dan" title="dan" /></p></a>
+			</li>
+			<li class="serena">
+				<a href="playSerena.html"><p>serena<img src="images/character/serenaCharacter.png" class="character" alt="serena" title="serena" /></p></a>   
+			</li>
+			<li class="nate">
+				<a href="playNate.html"><p>nate<img src="images/character/nateCharacter.png" class="character" alt="nate" title="nate" /></p></a>
+			</li>		
+		</ul>
+	</nav>
+	</div>
+	<!-- end dropdown navigation -->
+
+	
+	<!-- Add jQuery here -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$("#contact").addClass("rotate");
+			
+			//when the window scrolls, prevent the contact div from scrolling
+			$(window).scroll(function(){
+				//add the fixed class to the contact div
+				$("#contact").addClass("fixed");
+			}); //end window scroll
+			
+			
+			////////////////////////////////////////
+			//ContactMe Siderbar
+			////////////////////////////////////////
+			var isShowing = 1;		//variable to know if the contact form div is showing on the page
+			
+			$("#contact").click(function(e){
+				e.preventDefault();
+				
+				if( isShowing%2 )
+				{
+					//executes every time isShowing is an odd number
+					//bring the div onto the screen into view
+					$("#contact").animate({
+						left:"+=200"
+					}, 700);
+					$("#contactForm").animate({
+						left:"+=200"
+					}, 700);
+					
+					$("#contact").addClass("fixed");
+					$("#contactForm").addClass("fixed");
+					
+					$("#contact").css("background-color", "rgba(177,148,100, 0.95)");
+					
+					isShowing++; //add 1 to isShowing counter
+				}
+				else
+				{
+					$("#contact").animate({
+						left:"-=200"
+					}, 700);
+					$("#contactForm").animate({
+						left:"-=200"
+					}, 700);
+					
+
+					$("#contact").css("background-color", "rgba(177,148,100, 0.75)");
+					
+					isShowing++;
+					//executes every time isShowing is an even number
+					//move it off the screen, out of view
+				}
+			}); //end contact click
+			
+			//when the X is clicked
+			$("#contactClose").click(function(e){
+				e.preventDefault();
+				
+				$("#contact").animate({
+						left:"-=200"
+					}, 700);
+					$("#contactForm").animate({
+						left:"-=200"
+					}, 700);
+					
+
+					$("#contact").css("background-color", "rgba(177,148,100, 0.75)");
+					
+					isShowing++;
+			})
+			
+		}); //end document ready
+	</script>
+	
+	<!-- actual game play -->
+    <div id="gameContainer">
+        <div id="clothes">
+            <img src="images/icons/topIcon.png" id="topIcon" alt="clothes" class="clothesIcons" />
+            <img src="images/icons/bottomIcon.png" id="bottomIcon" alt="clothes" class="clothesIcons" />
+            <img src="images/icons/shoeIcon.png" alt="clothes" id="shoesIcon" class="clothesIcons" />
+            <img src="images/icons/accessoriesIcon.png" id="accessoriesIcon" alt="clothes" class="clothesIcons" />
+        </div>
+        <div id="doll"><img src="images/nate/nateDoll.png" alt="" class="dollResize" /></div>
+        <div id="closets">
+		<div id="topCloset" class="closet">
+            <div class="prev"></div>
+            <img id="top1" src="images/nate/tops/top1.png" class="slideImage topImage" alt="Shirt 1" />
+            <img id="top2" src="images/nate/tops/top2.png" class="slideImage topImage" alt="Shirt 2" />
+            <img id="top3" src="images/nate/tops/top3.png" class="slideImage topImage" alt="Shirt 3" />
+            <img id="top4" src="images/nate/tops/top4.png" class="slideImage topImage" alt="Shirt 4" />
+            <img id="top5" src="images/nate/tops/top5.png" class="slideImage topImage" alt="Shirt 5" />
+            <div class="next"></div>
+		</div>
+		<div id="bottomCloset" class="closet">
+            <div class="prev"></div>
+            <img id="bottom1" src="images/nate/bottoms/bottoms1.png" class="slideImage bottomImage" alt="Bottom 1" />
+            <img id="bottom2" src="images/nate/bottoms/bottoms2.png" class="slideImage bottomImage" alt="Bottom 2" />
+            <img id="bottom3" src="images/nate/bottoms/bottom3.png" class="slideImage bottomImage" alt="Bottom 3" />    
+			<div class="next"></div>
+		</div>
+		<div id="shoesCloset" class="closet">
+            <div class="prev"></div>
+            <img id="shoes1" src="images/nate/shoes/shoes1.png" class="slideImage shoesImage" alt="Shoes 1" />
+			<img id="shoes2" src="images/nate/shoes/shoes2.png" class="slideImage shoesImage" alt="Shoes 2" />
+			<img id="shoes3" src="images/nate/shoes/shoes3.png" class="slideImage shoesImage" alt="Shoes 3" />
+			<img id="shoes4" src="images/dan/shoes/shoes4.png" class="slideImage shoesImage" alt="Shoes 4" />
+			<img id="shoes5" src="images/dan/shoes/shoes5.png" class="slideImage shoesImage" alt="Shoes 5" />
+			<div class="next"></div>
+			</div>
+		<div id="accessoriesCloset" class="closet">
+            <div class="prev"></div>
+            <img id="accessories1" src="images/nate/accessories/accessories1.png" class="slideImage accessoriesImage" alt="Accessories 1" />           
+			<img id="accessories2" src="images/nate/accessories/accessories2.png" class="slideImage accessoriesImage" alt="Accessories 2" />           
+			<img id="accessories3" src="images/nate/accessories/accessories3.png" class="slideImage accessoriesImage" alt="Accessories 3" />           
+			<img id="accessories4" src="images/nate/accessories/accessories4.png" class="slideImage accessoriesImage" alt="Accessories 4" />           
+			<div class="next"></div>
+		</div>
+		</div>
+    </div>
+	<!-- end actual game play -->
+	
+	<div id="saveMessage">I'm impressed! Save your look and make another!</div>
+	
+	<div id="buttonContainer">
+		<a class="buttons" id="button1" href="chooseCharacter.html">PLAY</a>
+		<a class="buttons" id="button2">SUBMIT</a>		
+		<a class="buttons" id="button3" href="game.html">START OVER</a>
+	</div>
+	
+    <script type="text/javascript">
+    $(document).ready(function() {
+        let counter = 1;
+
+        // Function to show the selected closet
+        function showCloset(closetId) {
+            $(".closet").hide(); // Hide all closets
+            $("#" + closetId).show(); // Show the selected closet
+            counter = 1; // Reset counter for the new closet
+        }
+
+        // Attach click events to icons
+        $("#topIcon").click(function() {
+            showCloset("topCloset");
+        });
+
+        $("#bottomIcon").click(function() {
+            showCloset("bottomCloset");
+        });
+
+        $("#shoesIcon").click(function() {
+            showCloset("shoesCloset");
+        });
+
+        $("#accessoriesIcon").click(function() {
+            showCloset("accessoriesCloset");
+        });
+
+        // Function to determine clothing type
+        function getClothingType(image) {
+            if (image.hasClass("topImage")) return "top";
+            if (image.hasClass("bottomImage")) return "bottom";
+            if (image.hasClass("shoesImage")) return "shoes";
+            if (image.hasClass("accessoriesImage")) return "accessories";
+            return null;
+        }
+
+        // Dragging functionality
+        $(".slideImage").on("mousedown", function(e) {
+            const clothing = $(this).clone().addClass("dragging");
+            $("body").append(clothing);
+
+            clothing.css({
+                position: "absolute",
+                left: e.pageX - clothing.width() / 2,
+                top: e.pageY - clothing.height() / 2,
+                zIndex: 1000,
+            });
+
+            $(document).on("mousemove", function(e) {
+                clothing.css({
+                    left: e.pageX - clothing.width() / 2,
+                    top: e.pageY - clothing.height() / 2,
+                });
+            });
+
+            $(document).on("mouseup", function(e) {
+                $(document).off("mousemove mouseup");
+
+                const dollOffset = $("#doll").offset(); // Get the doll's position
+                const dollWidth = $("#doll").width();
+                const dollHeight = $("#doll").height();
+
+                // Check if the clothing is dropped on the doll area
+                if (
+                    e.pageX > dollOffset.left &&
+                    e.pageX < dollOffset.left + dollWidth &&
+                    e.pageY > dollOffset.top &&
+                    e.pageY < dollOffset.top + dollHeight
+                ) {
+                    const clothingType = getClothingType(clothing);
+
+                    if (clothingType) {
+                        // Remove any previously placed clothing of the same type
+                        $(`.${clothingType}OnDoll`).remove();
+
+                        // Place the current clothing on the doll
+                        clothing
+                            .removeClass("dragging slideImage")
+                            .addClass(`${clothingType}OnDoll`)
+                            .css({
+                                position: "absolute",
+                                zIndex: 300,
+                                left: "0px", // Corrected x position
+                                top: "0px",  // Corrected y position
+                                width: '101px', // Rescale width
+                                height: '402px', // Rescale height
+                            })
+                            .appendTo("#doll");
+                    }
+                } else {
+                    // If not dropped on doll, remove the dragging element
+                    clothing.remove();
+                }
+            });
+        });
+
+        // Closet sliding functionality
+        $(".next").click(function() {
+            const closet = $(this).closest(".closet");
+            const images = closet.find(".slideImage");
+            if (counter === images.length) {
+                images.animate(
+                    { top: "+=" + (counter - 1) * 203 },
+                    50
+                );
+                counter = 1;
+            } else {
+                images.animate({ top: "-=203" }, 250);
+                counter++;
+            }
+        });
+
+        $(".prev").click(function() {
+            const closet = $(this).closest(".closet");
+            const images = closet.find(".slideImage");
+            if (counter === 1) {
+                images.animate(
+                    { top: "-=" + (images.length - 1) * 203 },
+                    50
+                );
+                counter = images.length;
+            } else {
+                images.animate({ top: "+=203" }, 250);
+                counter--;
+            }
+        });
+
+        // Show the top closet by default
+        showCloset("topCloset");
+		
+		$('#button2').on('click', function() {
+			$('#clothes, #closets').animate({ opacity: 0 }, 500, function() {
+        		$(this).addClass('hidden'); 
+    		});
+		});
+			
+		$("#button2").click(function () {
+        // Show the message
+        $("#saveMessage").fadeIn(1000);
+
+        // Start changing the background color
+        setInterval(function () {
+            let currentColor = $("#saveMessage").css("background-color");
+
+            if (currentColor === "rgb(197, 0, 255)") {
+                $("#saveMessage").css("background-color", "#FF40CC");
+            } else if (currentColor === "rgb(255, 64, 204)") {
+                $("#saveMessage").css("background-color", "#FF1F5A");
+            } else {
+                $("#saveMessage").css("background-color", "#C500FF");
+            }
+        }, 1000);
+		});
+
+    });
+</script>
+
+</body>
+</html>
